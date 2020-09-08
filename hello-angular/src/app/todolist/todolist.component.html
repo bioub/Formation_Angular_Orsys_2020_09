@@ -1,12 +1,11 @@
-<div>
+<form (submit)="add()">
     Todo :
-    <input value="Lait" /> <!-- property binding + event binding -->
-    <button>+</button> <!-- event binding -->
-</div>
-
+    <!-- <input #inputEl name="newTodo" [ngModel]="newTodo" (ngModelChange)="newTodo = $event" /> -->
+    <!-- [()] BANANA IN A BOX -->
+    <input #inputEl name="newTodo" [(ngModel)]="newTodo" />
+    <button>+</button>
+</form>
 
 <ul>
-    <li>Pain</li> <!-- *ngFor -->
-    <li>Beurre</li>
-    <li>Eau</li>
+    <li *ngFor="let todo of todos">{{ todo }}</li>
 </ul>

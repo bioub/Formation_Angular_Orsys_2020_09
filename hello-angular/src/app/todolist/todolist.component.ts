@@ -1,18 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from "@angular/core";
 
 @Component({
-  selector: 'app-todolist',
-  templateUrl: './todolist.component.html',
-  styleUrls: ['./todolist.component.css']
+  selector: "app-todolist",
+  templateUrl: "./todolist.component.html",
+  styleUrls: ["./todolist.component.css"],
 })
-export class TodolistComponent implements OnInit {
+export class TodolistComponent implements OnInit, AfterViewInit {
+  newTodo = "Chocolat";
+  todos = ["Céréales", "Pomme"];
 
-  newTodo = 'Chocolat';
-  todos = ['Céréales', 'Pomme']
+  @ViewChild('inputEl') inputEl: ElementRef<HTMLInputElement>;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ngAfterViewInit() {
+    
   }
 
+  add() {
+    this.todos.push(this.newTodo);
+    this.newTodo = '';
+    this.inputEl.nativeElement.focus();
+  }
 }

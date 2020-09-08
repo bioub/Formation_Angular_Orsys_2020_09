@@ -9,9 +9,6 @@
 
 <div>
   Prénom :
-  <input
-    (input)="name = $event.target.value"
-    [value]="name"
-  />
+  <input (input)="name = $event.target.value" [value]="name" />
 </div>
 <p>hello {{ name }} !</p>
