@@ -1,0 +1,17 @@
+<!--
+    const inputEl = document.createElement('input');
+    inputEl.value = sync(name, () => name);
+    inputEl.addEventListener('input', ($event) => {
+        name = $event.target.value;
+        detectChanges();
+    });
+-->
+
+<div>
+  Prénom :
+  <input
+    (input)="name = $event.target.value"
+    [value]="name"
+  />
+</div>
+<p>hello {{ name }} !</p>
