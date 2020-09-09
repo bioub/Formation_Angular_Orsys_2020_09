@@ -13,8 +13,21 @@
 </div> -->
 
 <div class="items" *ngIf="opened">
-  <div class="item" [class.selected]="val === selectedValue" *ngFor="let val of values" (click)="handleSelection(val)">
-    {{ val }}
+  <div
+    class="item"
+    [class.selected]="val === selectedValue"
+    *ngFor="let val of values"
+    (click)="handleSelection(val)"
+  >
+    <ng-template #defaultTplItem>
+      {{ val }}
+    </ng-template>
+
+    <ng-template
+      [ngTemplateOutlet]="tplItem || defaultTplItem"
+      [ngTemplateOutletContext]="{ elt: val }"
+    >
+    </ng-template>
   </div>
 </div>
 
@@ -24,4 +37,14 @@
         <div>Vert</div>
         <div>Blue</div>
     </div>
+</ng-template> -->
+
+<!-- <ng-template #defaultLabelTemplate>
+  <span class="ng-value-icon left" (click)="unselect(item);" aria-hidden="true">×</span>
+  <span class="ng-value-label" [ngItemLabel]="item.label" [escape]="escapeHTML"></span>
+</ng-template>
+
+<ng-template
+  [ngTemplateOutlet]="labelTemplate || defaultLabelTemplate"
+  [ngTemplateOutletContext]="{ item: item.value, clear: clearItem, label: item.label }">
 </ng-template> -->

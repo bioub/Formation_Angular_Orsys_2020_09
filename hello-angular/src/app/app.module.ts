@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
 import { SelectComponent } from './select/select.component';
 import { TodolistComponent } from './todolist/todolist.component';
+import { ClockComponent } from './clock/clock.component';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
     SelectComponent,
-    TodolistComponent
+    TodolistComponent,
+    ClockComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

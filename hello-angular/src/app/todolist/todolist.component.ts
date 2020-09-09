@@ -8,7 +8,12 @@ import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, ViewEncapsulat
 })
 export class TodolistComponent implements OnInit, AfterViewInit {
   newTodo = "Chocolat";
-  todos = ["Céréales", "Pomme"];
+  todos = ["Céréales", "Pomme"]; 
+
+  // todos = [
+  //  {id: 123, title: 'Céréales', completed: false},
+  //  {id: 234, title: 'Pomme', completed: true},
+  // ]
 
   @ViewChild('inputEl') inputEl: ElementRef<HTMLInputElement>;
 
