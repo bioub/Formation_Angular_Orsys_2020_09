@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-select',
@@ -7,13 +7,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectComponent implements OnInit {
 
-  values = ['Rouge', 'Vert', 'Blue']
-  selectedValue = "Vert";
+  @Input() values = ['Rouge', 'Vert', 'Blue']
+  @Input() selectedValue = "Vert";
   opened = false;
 
-  constructor() { }
+  @Output() selectedValueChange = new EventEmitter<string>();
 
-  ngOnInit(): void {
+
+  constructor(private hostElement: ElementRef) {
+    console.log(this.selectedValue); // Vert
+   }
+  // private hostElement: ElementRef
+  // constructor(hostElement: ElementRef) { 
+  //   this.hostElement: ElementRef;
+  // }
+
+
+  @HostListener('document:click', ['$event'])
+  handleDocumentClick(event: MouseEvent) {
+    if (!this.hostElement.nativeElement.contains(event.target)) {
+      this.opened = false;
+    }
   }
 
+  ngOnInit(): void {
+    console.log(this.selectedValue); // Eric
+  }
+
+  handleSelection(val: string) {
+    this.selectedValue = val;
+    this.opened = false;
+
+    this.selectedValueChange.emit(val);
+  }
 }

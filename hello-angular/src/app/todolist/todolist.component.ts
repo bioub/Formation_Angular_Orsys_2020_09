@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from "@angular/core";
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, ViewEncapsulation } from "@angular/core";
 
 @Component({
   selector: "app-todolist",
   templateUrl: "./todolist.component.html",
   styleUrls: ["./todolist.component.css"],
+  // encapsulation: ViewEncapsulation.ShadowDom
 })
 export class TodolistComponent implements OnInit, AfterViewInit {
   newTodo = "Chocolat";

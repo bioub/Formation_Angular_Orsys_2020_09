@@ -1,5 +1,8 @@
-<app-hello></app-hello>
+<app-hello name="Toto"></app-hello>
+<app-hello [name]="selectedPrenom"></app-hello>
 
-<app-select></app-select>
+<!-- <app-select (selectedValueChange)="selectedPrenom = $event" [values]="prenoms" [selectedValue]="selectedPrenom"></app-select> -->
+<app-select [values]="prenoms" [(selectedValue)]="selectedPrenom"></app-select>
 
 <app-todolist></app-todolist>
+
