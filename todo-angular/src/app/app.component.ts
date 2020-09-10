@@ -7,16 +7,16 @@ import { Todo, TodoDto } from './todo.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  // todos: Todo[] = [
-  //   { id: 123, title: 'Céréales', completed: false },
-  //   { id: 234, title: 'Pomme', completed: true },
-  // ];
+  todos: Todo[] = [
+    { id: 123, title: 'Céréales', completed: false },
+    { id: 234, title: 'Pomme', completed: true },
+  ];
 
-  todos: Todo[] = new Array(2000).fill({}).map((t) => ({
-    id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
-    title: 'ABC',
-    completed: Math.random() > 0.5,
-  }));
+  // todos: Todo[] = new Array(2000).fill({}).map((t) => ({
+  //   id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
+  //   title: 'ABC',
+  //   completed: Math.random() > 0.5,
+  // }));
 
   handleAdd(todo) {
     // Changement muable

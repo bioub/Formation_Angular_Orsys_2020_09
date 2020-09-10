@@ -22,7 +22,7 @@ export class TodolistComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit() {
-    
+    // this.inputEl.nativeElement.addEventListener()
   }
 
   add() {

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
@@ -21,6 +22,7 @@ import { ButtonComponent } from './button/button.component';
   imports: [
     BrowserModule,
     FormsModule,
+    NgSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

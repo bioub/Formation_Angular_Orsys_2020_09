@@ -7,9 +7,11 @@
 <app-todolist></app-todolist>
 
 <p>Délai : <input [(ngModel)]="delay" /></p>
-<app-button (click)="showClock = !showClock">{{
+<app-button (click)="showClock = !showClock">
+  {{
   showClock ? 'Off' : 'On'
-}}</app-button>
+}}
+</app-button>
 <app-clock format="HH:mm:ss" [delay]="delay" *ngIf="showClock"></app-clock>
 
 <app-select [values]="prenoms" [(selectedValue)]="selectedPrenom">
@@ -17,3 +19,14 @@
     -- {{ item.toUpperCase() }} --
   </ng-template>
 </app-select>
+
+<h2>NG SELECT</h2>
+<ng-select [items]="prenoms" [clearable]="false" [(ngModel)]="selectedPrenom"></ng-select>
+
+
+
+<ng-select>
+  <ng-option>Rouge</ng-option>
+  <ng-option>Vert</ng-option>
+  <ng-option>Bleu</ng-option>
+</ng-select>
