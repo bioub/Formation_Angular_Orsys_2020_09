@@ -1,7 +1,5 @@
-<nav>
-  <a routerLink="/" routerLinkActive="current" [routerLinkActiveOptions]="{exact: true}">Home</a>
-  /
-  <a routerLink="/about" routerLinkActive="current">About</a>
-</nav>
+<app-top-bar></app-top-bar>
 
-<router-outlet></router-outlet>
+<div class="page">
+  <router-outlet></router-outlet>
+</div>
