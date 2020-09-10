@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "langage"
+		},
+		{
+			"path": "contacts-angular"
 		}
 	],
 	"settings": {}
