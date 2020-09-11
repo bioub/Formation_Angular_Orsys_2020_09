@@ -16,10 +16,27 @@ describe('ItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ItemComponent);
     component = fixture.componentInstance;
+    component.todo = { id: 123, title: 'ABC', completed: false};
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should contain todo title', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('span').textContent).toContain('ABC');
+  });
+
+  it('should emit delete event when I click on button -', () => {
+    component.delete.subscribe((todo) => {
+      expect(todo.title).toBe('ABC');
+    });
+
+    const compiled: HTMLElement = fixture.nativeElement;
+    const button = compiled.querySelector('button');
+
+    button.dispatchEvent(new MouseEvent('click'));
   });
 });

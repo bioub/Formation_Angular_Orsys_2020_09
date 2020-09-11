@@ -8,9 +8,16 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  // it('should display welcome message', () => {
+  //   page.navigateTo();
+  //   expect(page.getTitleText()).toEqual('todo-angular app is running!');
+  // });
+
+  it('should add a todo', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('todo-angular app is running!');
+    page.fillTodoInput('ABC');
+    page.submitForm();
+    expect(page.getFirstTodoText()).toEqual('ABC');
   });
 
   afterEach(async () => {
