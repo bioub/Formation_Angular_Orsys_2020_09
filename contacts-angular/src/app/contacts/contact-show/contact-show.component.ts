@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContactService } from '../contact.service';
 import { Contact } from '../contact.model';
 import { map, switchMap } from 'rxjs/operators';
+import { Subscription, Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-contact-show',
@@ -10,7 +11,10 @@ import { map, switchMap } from 'rxjs/operators';
   styleUrls: ['./contact-show.component.scss'],
 })
 export class ContactShowComponent implements OnInit {
-  contact: Contact = {};
+  contact$: Observable<Contact>;
+  // contact$: Subject<Contact>;
+
+  // private subscription: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,13 +29,17 @@ export class ContactShowComponent implements OnInit {
     //   })
     // });
 
-    this.activatedRoute.paramMap
+    this.contact$ = this.activatedRoute.paramMap
       .pipe(
         map((paramMap) => paramMap.get('id')),
         switchMap((id) => this.contactService.getById(id))
-      )
-      .subscribe((contact) => {
-        this.contact = contact;
-      });
+      );
+
+      // this.contact$ = new Subject();
+      // contact$.subscribe(this.contact$);
   }
+
+  // ngOnDestroy(): void {
+  //   this.subscription.unsubscribe();
+  // }
 }

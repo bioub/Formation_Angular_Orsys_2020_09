@@ -1,0 +1,8 @@
+<div>
+    Prénom :
+    <input class="input" [formControl]="name"/>
+    <span *ngIf="name.invalid && name.touched">Le champ est obligatoire</span>
+  </div>
+  <p>hello {{ name.value }} !</p>
+  
+  

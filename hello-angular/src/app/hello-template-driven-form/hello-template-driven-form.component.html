@@ -1,0 +1,6 @@
+<div>
+  Prénom :
+  <input class="input" [(ngModel)]="name" required #ngModelName="ngModel" />
+  <span *ngIf="ngModelName.invalid && ngModelName.touched">Le champ est obligatoire</span>
+</div>
+<p>hello {{ name }} !</p>

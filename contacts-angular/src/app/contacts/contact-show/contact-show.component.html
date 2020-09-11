@@ -1,11 +1,14 @@
-<h3>Nom</h3>
-<p>{{contact.name}}</p>
+<ng-container *ngIf="contact$ | async as contact; else loading">
+  <h3>Nom</h3>
+  <p>{{ contact.name }}</p>
 
-<h3>Email</h3>
-<p>{{contact.email}}</p>
+  <h3>Email</h3>
+  <p>{{ contact.email }}</p>
 
-<h3>Téléphone</h3>
-<p>{{contact.phone}}</p>
+  <h3>Téléphone</h3>
+  <p>{{ contact.phone }}</p>
 
+  <router-outlet></router-outlet>
+</ng-container>
 
-<router-outlet></router-outlet>
+<ng-template #loading>Loading...</ng-template>
