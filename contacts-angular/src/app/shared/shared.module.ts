@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { SelectComponent } from './select/select.component';
 import { MatButtonModule } from "@angular/material/button";
 import { MatListModule } from "@angular/material/list";
+import { KebabPipe } from './kebab.pipe';
 
 
 @NgModule({
   declarations: [
     SelectComponent,
+    KebabPipe,
   ],
   imports: [
     CommonModule
@@ -17,6 +19,7 @@ import { MatListModule } from "@angular/material/list";
     MatButtonModule,
     SelectComponent,
     MatListModule,
+    KebabPipe
   ]
 })
 export class SharedModule { }
