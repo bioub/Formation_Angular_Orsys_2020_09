@@ -9,7 +9,6 @@ import { Contact } from '../contact.model';
   styleUrls: ['./contacts-list.component.scss'],
 })
 export class ContactsListComponent implements OnInit {
-
   contacts: Contact[] = [];
 
   constructor(private title: Title, private contactService: ContactService) {}
@@ -19,6 +18,10 @@ export class ContactsListComponent implements OnInit {
 
     this.contactService.getAll().subscribe((contacts) => {
       this.contacts = contacts;
+    });
+
+    this.contactService.add.subscribe((contact: Contact) => {
+      this.contacts.push(contact);
     });
   }
 }

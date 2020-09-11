@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Contact } from './contact.model';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 
 @Injectable({
@@ -12,11 +12,13 @@ export class ContactService {
   cacheList$: ReplaySubject<Contact[]>;
   cacheListDate: number;
 
+  add = new EventEmitter<Contact>();
+
   constructor(private httpClient: HttpClient) {}
 
   getAll() {
     // Mise en cache pendant 20 secondes maximum
-    if (!this.cacheList$ || this.cacheListDate + (20 * 1000) < Date.now()) {
+    if (!this.cacheList$ || this.cacheListDate + 20 * 1000 < Date.now()) {
       this.cacheListDate = Date.now();
       this.cacheList$ = new ReplaySubject(1);
       this.httpClient
@@ -38,5 +40,11 @@ export class ContactService {
           phone: c.phone,
         }))
       );
+  }
+
+  create(contact: Contact) {
+    return this.httpClient.post<Contact>(environment.baseApiUrl + '/users', contact).pipe(
+      tap((contact: Contact) => this.add.emit(contact))
+    );
   }
 }

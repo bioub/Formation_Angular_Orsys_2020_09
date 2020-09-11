@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ContactService } from '../contact.service';
+import { Contact } from '../contact.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact-create',
@@ -14,7 +17,7 @@ export class ContactCreateComponent implements OnInit {
     phone: new FormControl(''),
   });
 
-  constructor() { }
+  constructor(private contactService: ContactService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +27,9 @@ export class ContactCreateComponent implements OnInit {
   }
 
   create() {
-    console.log('create');
+    this.contactService.create(this.form.value).subscribe((contact: Contact) => {
+      // ajouter au tableau
+      this.router.navigate(['contacts']);
+    });
   }
 }
